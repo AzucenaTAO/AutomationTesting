@@ -11,11 +11,11 @@ namespace AutomationTesting
     {
         public bool IsCurrentStatus(string status)
         { 
-            return DriverHelper.GetText(By.CssSelector("//.step_current span")).Contains(status);
+            return DriverHelper.GetText(By.CssSelector(".step_current span")).Contains(status);
         }
         public void PurchaseCheckout()
         {
-            DriverHelper.Click(By.CssSelector(".button-container a[title='Proceed to checkout']"));
+            DriverHelper.Click(By.CssSelector(".button-container a[title='Proceed to checkout'] span"));
         }
 
         public void SummaryCheckout()

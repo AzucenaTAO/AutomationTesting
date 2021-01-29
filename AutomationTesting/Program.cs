@@ -9,6 +9,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading;
 
 namespace AutomationTesting
 {
@@ -21,17 +22,19 @@ namespace AutomationTesting
         {
             Driver.initbrowser();
             Login login = new Login();
-            login.LoginUser("azucena.alvarez@hotmail.com", "Azu1234.");
+            login.LoginUser("azucena.alvarez@hotmail.com", "Azu123456.");
             login.GoToHome();
             Products products = new Products();
             products.AddToCart(3);
             Purchase purchase = new Purchase();
+            //Thread.Sleep(300);
             purchase.PurchaseCheckout();
             Assert.IsTrue(purchase.IsCurrentStatus("Summary"));
             purchase.SummaryCheckout();
             purchase.AddressCheckout();
             purchase.TermsAndServicesCheck();
             purchase.ShippingCheckout();
+            Driver.driver.Close();
 
            
         }
