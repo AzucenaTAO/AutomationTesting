@@ -13,15 +13,19 @@ namespace AutomationTesting
     {
         public static void Click (By by)
         {
+            WebDriverWait wait = new WebDriverWait(Driver.driver, TimeSpan.FromSeconds(10));
+            var element = wait.Until(ExpectedConditions.ElementIsVisible(by));
             Driver.driver.FindElement(by).Click();
         }
         public static void SetText(By by, string text)
         {
+             WebDriverWait wait = new WebDriverWait(Driver.driver, TimeSpan.FromSeconds(10));
+            var element = wait.Until(ExpectedConditions.ElementIsVisible(by));
             Driver.driver.FindElement(by).SendKeys(text);
         }
         public static void MouseOver(By by)
         {
-            WebDriverWait wait = new WebDriverWait(Driver.driver, TimeSpan.FromSeconds(5));
+            WebDriverWait wait = new WebDriverWait(Driver.driver, TimeSpan.FromSeconds(10));
             var element = wait.Until(ExpectedConditions.ElementIsVisible(by));
 
             Actions action = new Actions(Driver.driver);
@@ -29,6 +33,8 @@ namespace AutomationTesting
         }
         public static string GetText(By by)
         {
+             WebDriverWait wait = new WebDriverWait(Driver.driver, TimeSpan.FromSeconds(20));
+            var element = wait.Until(ExpectedConditions.ElementIsVisible(by));
             return Driver.driver.FindElement(by).Text;
         }
     }
